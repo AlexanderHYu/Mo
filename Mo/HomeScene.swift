@@ -11,8 +11,14 @@ import GameplayKit
 
 class HomeScene: SKScene {
     
+    var leftButton: SKNode? {
+        return childNode(withName: "LeftButton")
+    }
+    var rightButton: SKNode? {
+        return childNode(withName: "RightButton")
+    }
+    
     override func sceneDidLoad() {
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -21,6 +27,9 @@ class HomeScene: SKScene {
             let touchedNode = atPoint(location)
             if camera != nil {
                 move(touchNode: touchedNode)
+                resetHUD()
+                print(leftButton!.position)
+                print(rightButton!.position)
             }
         }
     }
@@ -35,5 +44,10 @@ class HomeScene: SKScene {
             print(2)
             camera!.position.x -= CGFloat(1500)
         }
+    }
+    
+    func resetHUD() {
+        leftButton?.position = CGPoint(x: camera!.position.x - 600, y: camera!.position.y)
+        rightButton?.position = CGPoint(x: camera!.position.x + 600, y: camera!.position.y)
     }
 }
