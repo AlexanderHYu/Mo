@@ -110,8 +110,8 @@
 			children = (
 				7A680791231DAFA1006A9352 /* AppDelegate.swift */,
 				7A680795231DAFA1006A9352 /* Actions.sks */,
-				7A680797231DAFA1006A9352 /* GameScene.swift */,
 				7AA5A31B23243B8300B64106 /* HomeScene.swift */,
+				7A680797231DAFA1006A9352 /* GameScene.swift */,
 				7A680799231DAFA1006A9352 /* GameViewController.swift */,
 				7A68079B231DAFA1006A9352 /* Main.storyboard */,
 				7A68079E231DAFA3006A9352 /* Assets.xcassets */,

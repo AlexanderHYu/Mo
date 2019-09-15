@@ -11,35 +11,29 @@ import GameplayKit
 
 class HomeScene: SKScene {
     
-    let homeCamera = SKCameraNode(fileNamed: "cameraInHome")
-    let homeScene = SKScene(fileNamed: "HomeScene")
-    
     override func sceneDidLoad() {
-        <#code#>
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
+            if camera != nil {
+                move(touchNode: touchedNode)
+            }
         }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
+    func move(touchNode:SKNode) {
+        if touchNode.name == "RightButton" {
+            print(1)
+            camera!.position.x += CGFloat(1500)
+            print(camera!.position)
+        }
+        if touchNode.name == "LeftButton" {
+            print(2)
+            camera!.position.x -= CGFloat(1500)
+        }
     }
 }
