@@ -19,6 +19,7 @@ class HomeScene: SKScene {
     }
     
     override func sceneDidLoad() {
+        resetHUD()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -28,21 +29,24 @@ class HomeScene: SKScene {
             if camera != nil {
                 move(touchNode: touchedNode)
                 resetHUD()
-                print(leftButton!.position)
-                print(rightButton!.position)
             }
         }
     }
     
     func move(touchNode:SKNode) {
+        let camPosition = camera!.position
+        var nextCamPosition = CGFloat(1500)
         if touchNode.name == "RightButton" {
-            print(1)
-            camera!.position.x += CGFloat(1500)
-            print(camera!.position)
+            if camPosition.x >= CGFloat(4500) {
+                nextCamPosition = CGFloat(-4500)
+            }
+            camera!.position.x += nextCamPosition
         }
         if touchNode.name == "LeftButton" {
-            print(2)
-            camera!.position.x -= CGFloat(1500)
+            if camPosition.x <= CGFloat(0) {
+                nextCamPosition = CGFloat(-4500)
+            }
+            camera!.position.x -= nextCamPosition
         }
     }
     
